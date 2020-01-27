@@ -3,14 +3,14 @@ from mido import MidiFile
 import numpy as np
 import os
 
-#Constant
+# Constant
 directory_train = './data/train/'
 directory_test_label = './data/validation/groundTruth/'
 directory_test = './data/validation/query/'
 directory_test_final = './data/test'
 
 
-def getTraindata():
+def get_train_data():
     data = []
     label = []
     for file in os.listdir(directory_train):
@@ -24,7 +24,7 @@ def getTraindata():
     return np.asarray(data), np.asarray(label)
 
 
-def getTestData():
+def get_test_data():
     data = []
     label = []
     label_query = []
