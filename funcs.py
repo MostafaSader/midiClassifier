@@ -2,7 +2,7 @@ import mido
 from mido import MidiFile
 import numpy as np
 import os
-
+import pandas as pd
 # Constant
 directory_train = './data/train/'
 directory_test_label = './data/validation/groundTruth/'
@@ -11,17 +11,8 @@ directory_test_final = './data/test'
 
 
 def get_train_data():
-    data = []
-    label = []
-    for file in os.listdir(directory_train):
-        mid = MidiFile(os.path.join(directory_train, file))
-        temp = get(mid)
-        for i in range(len(temp) - 7):
-            lbl = np.zeros(128)
-            data.append(np.array(temp[i:i + 7]))
-            lbl[temp[i + 7]] = 1
-            label.append(lbl)
-    return np.asarray(data), np.asarray(label)
+    return pd.read_csv('trainLabels.txt')
+
 
 
 def get_test_data():
