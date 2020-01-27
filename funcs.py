@@ -71,3 +71,12 @@ def get(mid):
             if hasattr(msg, 'note'):
                 vector.append(msg.note)
     return vector
+
+
+def custom_loss():
+    # Create a loss function that adds the MSE loss to the mean of all squared activations of a specific layer
+    def loss(y_true, y_pred):
+        return (y_true - y_pred) ** 2
+
+    # Return a
+    return loss
