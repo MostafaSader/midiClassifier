@@ -15,7 +15,6 @@ AT_THE_CLUB.mid,5
 AWALK.MID,6
 A_Cold_Day_In_Hell.mid,5
 Aenima.mid,6
-AlbertCollins_AGoodFoolIsHardToFind.mid,5
 AlbertKing-BornUnderBadSign.mid,6
 AliceCooper_Elected.mid,6
 All_The_Small_Things.mid,6

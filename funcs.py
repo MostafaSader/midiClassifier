@@ -10,17 +10,25 @@ def get_features_from_midi_file_name(file_name):
 
 
 def get_train_data():
-    data = []
-    label = []
+    i = 1
+    files = []
+    labels = []
     file_list = pd.read_csv('trainLabels.txt').values
     for row in file_list:
-        label = row[1]
+        if i == 10:
+            break
+        print(i)
+        print("=========")
+        print(row[0])
+        print("=========")
+        i = i + 1
         data = get_features_from_midi_file_name(row[0])
-        label.append(label)
-        data.append(data)
-    label = np.asarray(label)
-    data = np.asarray(data)
-    return data, label
+        labels.append(row[1])
+        files.append(data)
+    # labels = np.asarray(labels)
+    # files = np.asarray(data)
+    i = 0
+    return files, labels
 
 
 def get(file):

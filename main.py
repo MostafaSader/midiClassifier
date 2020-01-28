@@ -1,11 +1,18 @@
-from keras.models import Sequential
-from keras.layers import Dense
+# from keras.models import Sequential
+# from keras.layers import Dense
 import funcs
 
 if __name__ == '__main__':
     print('Getting data')
     data_train, label_train = funcs.get_train_data()
+    print("len of train " + str(len(data_train)))
+    print("len of lable " + str(len(label_train)))
+    print("===========================")
+    # print(data_train[0])
+    print("===========================")
+    # print(label_train[0])
     print('Start NN')
+    exit()
     model = Sequential()
     model.add(Dense(7, activation='relu'))
     model.add(Dense(10, activation='relu'))
