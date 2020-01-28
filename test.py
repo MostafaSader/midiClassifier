@@ -4,56 +4,69 @@ np.random.seed(123)
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.utils import np_utils
-import funcs
 from keras.optimizers import Adam
 from keras import losses
 from keras.activations import sigmoid
 from matplotlib import pyplot as plt
 from keras.models import load_model
+from collections import Counter
+import funcs
 
 
 model = load_model('./model.h5')
 print("get test data")
 
-data_test, label_query= funcs.getFinalTest()
-# data_test = data_test[0:1000]
-# label_query = label_query[0:1000]
-res = model.predict(data_test)
-print(data_test.shape)
-print(data_test[0].shape)
+data_test, label_test= funcs.get_test_data()
 
+input_data = []
+for data_item in data_test:
+    dt = Counter(data_item)
+    ent = np.zeros(128)
+    for idx in range(0,127):
+        ent[idx] = dt[idx]
+    input_data.append(ent)
+input_data = np.asarray(input_data)
+
+
+output_data = []
+for item in label_test:
+    out = np.zeros(5)
+    if item == 3:
+        out[0] = 1
+    elif item == 5:
+        out[1] = 1
+    elif item == 6:
+        out[2] = 1
+    elif item == 7:
+        out[3] = 1
+    elif item == 9:
+        out[4] = 1
+    output_data.append(out)
+output_data = np.asarray(output_data)
+
+res = model.evaluate(input_data , output_data)
+print(res)
+print(model.metrics_names)
+exit()
+
+res = model.predict(input_data)
+
+
+for i, item in enumerate(res):
+    idxMax = np.argmax(item)
+    predict = 0
+    print("real " + str(label_test[i]))
+    if idxMax == 0:
+        predict = 3
+    elif idxMax == 1:
+        predict = 5
+    elif idxMax == 2:
+        predict = 6
+    elif idxMax == 3:
+        predict = 7
+    elif idxMax == 4:
+        predict = 9
+    print("predict " +str(predict))
+    
 # res = ( res * 100).astype('int16')
 # model.save('./test128.h5')
-
-idx = 0
-cnt = len(data_test)
-dataRes = []
-curectedNotes = 0
-for i in range(cnt - 6):
-    labelQuery = np.argmax(label_query[i])
-    dataTest = np.array([data_test[i]])
-    res = model.predict(dataTest)
-    res = np.argmax(res)
-    if abs(res - labelQuery) >= 12:
-        data_test[i+1][6] = res
-        data_test[i+2][5] = res
-        data_test[i+3][4] = res
-        data_test[i+4][3] = res
-        data_test[i+5][2] = res
-        data_test[i+6][1] = res
-        curectedNotes = curectedNotes + 1
-        print("noise corrected")
-        print("data " + str(i) + " changed from " + str(labelQuery) + " to " + str(res))
-        dataRes.append(res)
-    else:
-        dataRes.append(labelQuery)
-print("Total currectness : " + str(curectedNotes))
-x = []
-y = []
-for i in range(label_query.shape[0]):
-    y.append(np.argmax(label_query[i]))
-y = np.asarray(y)
-
-plt.plot(range(len(dataRes)), dataRes ,'r')
-plt.plot(range(y.shape[0]), y , "g")
-plt.show()

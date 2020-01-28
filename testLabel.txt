@@ -1,3 +1,4 @@
+name,genre
 86.mid,6
 AllmanBrothers-OneWayOut.mid,6
 BigBillBroonzy-KeyToTheHighway.mid,6
@@ -5,7 +6,6 @@ Bombshell.mid,6
 Break_Stuff.mid,6
 Bulls_On_Parade.mid,6
 CHAIN_GANG.mid,5
-GuitarJazzBlues59.mid,5
 HOLD_ON_I_M_COMING.mid,5
 Hideaway.mid,6
 JAMES_BROWN_SEX_MACHINE.mid,5

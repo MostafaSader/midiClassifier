@@ -335,7 +335,6 @@ earlyam.mid,3
 egblues.mid,5
 elvis_presley_all_shook_up.mid,5
 eraraute.mid,7
-eroica-1.mid,7
 estamp02.mid,7
 estamp4.mid,7
 etude.mid,9
@@ -362,7 +361,6 @@ go_again.mid,6
 go_the_distance.mid,3
 gonions.mid,5
 greenday_jaded.mid,6
-gtrblues.mid,5
 hallfima.mid,7
 hand3.mid,7
 hand6.mid,7
@@ -454,9 +452,7 @@ omniscur.mid,7
 onenote.mid,9
 oppatt.mid,3
 orpheus.mid,9
-papillon.mid,7
 paradise_city.mid,6
-paul_butterfield-good_morning.mid,5
 photograph.mid,6
 piano_concerto_449_1.mid,7
 piano_sonata_330_1_(c)oguri.mid,7

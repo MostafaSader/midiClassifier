@@ -6,7 +6,9 @@ from collections import Counter
 
 if __name__ == '__main__':
     print('Getting data')
-    data_train, label_train = funcs.get_train_data()
+    # data_train, label_train = funcs.get_train_data()
+    data_train = funcs.load_data("INPUT_DATA.pkl")
+    label_train = funcs.load_data("INPUT_LABELS.pkl")
     print("len of train " + str(len(data_train)))
     print("len of lable " + str(len(label_train)))
     print("===========================")
@@ -14,9 +16,12 @@ if __name__ == '__main__':
     # ========================================================
     input_data = []
     for data_item in data_train:
+        mean = np.mean(data_item)
+
         dt = Counter(data_item)
-        ent = np.zeros(128)
-        for idx in range(0,127):
+        ent = np.zeros(129)
+        ent[0] = mean
+        for idx in range(1,128):
             ent[idx] = dt[idx]
         input_data.append(ent)
     input_data = np.asarray(input_data)
@@ -48,7 +53,7 @@ if __name__ == '__main__':
     print("===========================")
     print('Start NN')
     model = Sequential()
-    model.add(Dense(128, activation='relu'))
+    model.add(Dense(129, activation='relu'))
     model.add(Dense(96, activation='relu'))
     model.add(Dense(72, activation='relu'))
     model.add(Dense(54, activation='relu'))
@@ -58,7 +63,7 @@ if __name__ == '__main__':
     model.add(Dense(5, activation='sigmoid'))
     model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy', 'cosine_proximity'])
     print("Start fit data")
-    trainedModel = model.fit(input_data, output_data, epochs=100, batch_size=5)
+    trainedModel = model.fit(input_data, output_data, epochs=100, batch_size=1)
     print("get test data")
     model.save('./model.h5')
     print("Model saved")
