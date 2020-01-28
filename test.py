@@ -12,7 +12,7 @@ from matplotlib import pyplot as plt
 from keras.models import load_model
 
 
-model = load_model('./test-128.h5')
+model = load_model('./model.h5')
 print("get test data")
 
 data_test, label_query= funcs.getFinalTest()

@@ -15,12 +15,12 @@ def get_train_data():
     labels = []
     file_list = pd.read_csv('trainLabels.txt').values
     for row in file_list:
-        if i == 10:
+        if i == 100:
             break
-        print(i)
-        print("=========")
-        print(row[0])
-        print("=========")
+        # print(i)
+        # print("=========")
+        # print(row[0])
+        # print("=========")
         i = i + 1
         data = get_features_from_midi_file_name(row[0])
         labels.append(row[1])
