@@ -75,3 +75,46 @@ def get(file):
                 if msg.velocity != 0:
                     vector.append(msg.note)
     return vector
+
+
+def ext(data):
+    f = [data[np.argmax(data)], data[np.argmin(data)]]
+
+    histogram = np.zeros(128)
+    mean = 0
+    last = data[0]
+    max_shib_p = 0
+    max = 0
+    min = 130
+    max_shib_n = 0
+    for d in data:
+        if max < d:
+            max = d
+        if min > d:
+            min =d
+        if d - last > 0:
+            if abs(d - last) > max_shib_p:
+                max_shib_p = abs(d - last)
+        if d - last < 0:
+            if abs(d - last) > max_shib_n:
+                max_shib_n = abs(d - last)
+        last = d
+        mean += d
+        histogram[d] += 1
+    f.append(max_shib_p)
+    f.append(max_shib_n)
+    s = mean / len(data)
+    f.append(s)
+    f.append(max)
+    f.append(min)
+    for h in histogram:
+        f.append(h)
+
+    return np.asarray(f)
+
+
+def extract(input_data):
+    ex = []
+    for i in range (len(input_data)):
+        ex.append(ext(input_data[i]))
+    return np.asarray(ex)
