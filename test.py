@@ -1,30 +1,11 @@
 import numpy as np
-
-np.random.seed(123)
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.utils import np_utils
-from keras.optimizers import Adam
-from keras import losses
-from keras.activations import sigmoid
-from matplotlib import pyplot as plt
 from keras.models import load_model
-from collections import Counter
 import funcs
 
 model = load_model('./model.h5')
 print("get test data")
 
 data_test, label_test = funcs.get_test_data()
-
-# input_data = []
-# for data_item in data_test:
-#     dt = Counter(data_item)
-#     ent = np.zeros(128)
-#     for idx in range(0,127):
-#         ent[idx] = dt[idx]
-#     input_data.append(ent)
-# input_data = np.asarray(input_data)
 f = funcs.extract(data_test)
 
 output_data = []

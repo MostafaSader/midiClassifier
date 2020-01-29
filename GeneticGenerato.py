@@ -25,7 +25,7 @@ def fitness(data, label, zero_index, answer):
     model = load_model('./model.h5')
     g = [dd]
     res = model.predict(funcs.extract(g))
-    label_classifier = res[0]  # TODO : با کلسیفایر باید این آرایه رو بدست بیاریم
+    label_classifier = res[0]  # 
 
     score = 0
     for f in range(len(label_arr)):
