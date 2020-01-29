@@ -16,16 +16,13 @@ SOULFINGER.mid,5
 Schoenberg_op33a.mid,7
 What_If_I.mid,6
 Why did you do it.mid,5
-anglvirm.mid,7
 av003.mid,7
 b00238.mid,5
 badge.mid,6
 beforeyoucomeforme.mid,5
 bluejam.mid,5
 cm_ecco_pur.mid,7
-conductu.mid,7
 d-anotherday.mid,3
-d-callme.mid,3
 despafm.mid,7
 doxy.mid,5
 everybody.mid,3
